@@ -32,17 +32,17 @@ __main
 loop
 	BL	SWITCH_read
 	TST	R1, #GPIO_BP1      
-	BEQ	test_victory		; Joue MusicVictory si switch1 est actionné
+	BEQ	test_victory		; Joue MusicVictory si switch1 est actionnÃ©
 	TST	R1, #GPIO_BP2
-	BEQ	test_defeat			; Joue MusicDefeat si switch2 est actionné
+	BEQ	test_defeat			; Joue MusicDefeat si switch2 est actionnÃ©
 
 
 	BL	BUMPER_read
 	TST	R0, #GPIO_BUMPER_L
-	BEQ	test_score			; Joue SoundScore si bumper gauche est actionné
+	BEQ	test_score			; Joue SoundScore si bumper gauche est actionnÃ©
 	
 	TST	R0, #GPIO_BUMPER_R
-	BEQ	test_endgame		; Joue MusicVictoryFinal si bumper droit est actionné
+	BEQ	test_endgame		; Joue MusicVictoryFinal si bumper droit est actionnÃ©
 	
 	B	loop
 
@@ -70,5 +70,6 @@ debounce_delay
 	SUBS R2, R2, #1
 	BNE	debounce_delay
 	B	loop
+
 
 	END
