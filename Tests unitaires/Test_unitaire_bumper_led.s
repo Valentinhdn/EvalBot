@@ -1,5 +1,5 @@
 	;; RK - Evalbot (Cortex M3 de Texas Instrument)
-; programme - Pilotage 2 Moteurs Evalbot par PWM tout en ASM (Evalbot tourne sur lui même)
+; programme - Pilotage 2 Moteurs Evalbot par PWM tout en ASM (Evalbot tourne sur lui mÃªme)
 GPIO_BUMPER_L       EQU 0x01      ; Bumper Gauche broche 0 
 GPIO_BUMPER_R       EQU 0x02 	  ; Bumper Droit broche 1
 
