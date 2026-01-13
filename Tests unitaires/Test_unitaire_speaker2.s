@@ -27,9 +27,9 @@ __main
 loop
 	BL	SWITCH_read
 	TST	R1, #GPIO_BP1      
-	BEQ	test_PinPon			; Joue son pompier (pin-pon) si switch1 est actionné
+	BEQ	test_PinPon			; Joue son pompier (pin-pon) si switch1 est actionnÃ©
 	TST	R1, #GPIO_BP2
-	BEQ	test_BipGo			; Joue son compte à rebours (bip-bip-bip-go) si switch2 est actionné
+	BEQ	test_BipGo			; Joue son compte Ã  rebours (bip-bip-bip-go) si switch2 est actionnÃ©
 	
 	B	loop
 
