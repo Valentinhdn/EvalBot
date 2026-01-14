@@ -12,13 +12,13 @@
 		EXPORT	Sound_Sirene_Pin
 		EXPORT	Sound_Sirene_Pon
 			
-		EXPORT  PlayNote		; NÈcessaire pour le compte ‡ rebours
-		EXPORT  Wait_Sound		; NÈcessaire pour les pauses musicales
+		EXPORT  PlayNote		; N√©cessaire pour le compte √† rebours
+		EXPORT  Wait_Sound		; N√©cessaire pour les pauses musicales
 
 
-; =======================
-; DEFINITIONS PORT J
-; =======================
+; ======================
+; Definition du port J
+
 SYSCTL_RCGC2_R	EQU	0x400FE108
 GPIO_PORTJ_BASE	EQU	0x4003D000
 GPIO_PORTJ_DIR	EQU	0x4003D400
@@ -26,8 +26,8 @@ GPIO_PORTJ_DEN	EQU	0x4003D51C
 GPIO_PORTJ_DATA	EQU	0x4003D3FC
 
 ; =======================
-; INITIALISATION
-; =======================
+; Initialisation
+
 Sound_Init
 		PUSH {R0, R1, LR}
 		
@@ -56,17 +56,17 @@ Sound_Init
 		POP {R0, R1, PC}
 		
 ; ==================
-; SONS SPECIFIQUES
-; ==================
-; R5 -> frÈquence de la note
-; Valeur ÈlÈvÈe = grave
+; Son sp√©cifique 
+
+; R5 -> fr√©quence de la note
+; Valeur √©l√©v√©e = grave
 ; Valeur basse = aigu
 
-; R6 -> durÈe de la note
-; Valeur ÈlevÈe = long
+; R6 -> dur√©e de la note
+; Valeur √©lev√©e = long
 ; Valeur basse = court
 
-; Compte ‡ rebours (Bip)
+; Compte √† rebours (Bip)
 Sound_Countdown_Bip
 		PUSH {R2, R5, R6, LR}
 		LDR R5, =2500
@@ -76,7 +76,7 @@ Sound_Countdown_Bip
 		BL  Wait_Sound
 		POP {R2, R5, R6, PC}
 
-; Compte ‡ rebours (GO)
+; Compte √† rebours (GO)
 Sound_Countdown_Go
 		PUSH {R5, R6, LR}
 		LDR R5, =800
@@ -105,8 +105,7 @@ Sound_Sirene_Pon
 		POP {R2, R5, R6, PC}
 
 ; =======================
-; MELODIES
-; =======================
+; Melodie
 
 ; Musique pour la victoire d'une manche
 MusicVictory
@@ -131,7 +130,7 @@ MusicVictory
 		POP {R4-R6, PC}
 
 
-; Musique pour la dÈfaite d'une manche
+; Musique pour la d√©faite d'une manche
 MusicDefeat
 		PUSH {R4-R6, LR}
 		
@@ -206,7 +205,7 @@ Silence_Effect
 		POP	{R2, PC}
 
 
-; Musique pour la victoire final du jeu (aprËs les 3 manches remportÈes)
+; Musique pour la victoire final du jeu (apr√®s les 3 manches remport√©es)
 MusicVictoryFinal
 		PUSH {R4-R6, LR}
 	
@@ -282,10 +281,10 @@ WaitSilence
 
 
 ; ============
-; AUDIO
+; Audio
 
 
-; EntrÈes : R5 = dÈlai, R6 = durÈe
+; Entr√©es : R5 = d√©lai, R6 = dur√©e
 PlayNote
 		PUSH {R3, LR}
 		LDR R3, =GPIO_PORTJ_DATA
@@ -318,5 +317,6 @@ Wait_Sound
 		SUBS R2, R2, #1
 		BNE	 Wait_Sound
 		BX	 LR
+
 
 		END
